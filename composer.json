@@ -1,4 +1,9 @@
 {
+	"description": "Natural HR Challenge",
+	"name": "Natural-HR",
+	"type": "project",
+	"homepage": "https://naturalhr-challenge.herokuapp.com/",
+	"license": "MIT",
 	"require": {
 		"php": ">=7.3"
 	},
