@@ -6,5 +6,5 @@
 	"license": "MIT",
 	"require": {
 		"php": ">=7.3"
-	},
+	}
 }
