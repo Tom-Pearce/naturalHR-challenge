@@ -1,6 +1,6 @@
 {
 	"description": "Natural HR Challenge",
-	"name": "Natural-HR",
+	"name": "tom/natural-hr",
 	"type": "project",
 	"homepage": "https://naturalhr-challenge.herokuapp.com/",
 	"license": "MIT",
