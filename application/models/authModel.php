@@ -23,11 +23,11 @@
         // LIMIT 1';
       $query = $mysqli->prepare($sql);
       $query->bind_param('ss', $email, $pass);
-      $result = $query->execute();
+      $query->execute();
+      $result = $query->get_result();
       while ($row = $result->fetch_assoc()) {
         $data[] = $row;
       }
-      $data = $query->get_result();
       echo '<br /><br />mysqli:';
       var_dump($mysqli);
       echo '<br /><br />$query:';
