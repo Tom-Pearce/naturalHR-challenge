@@ -1,8 +1,8 @@
   <div class="row">
     <div class="col-3">
       <form id="loginForm">
-        <input type="email" class="form-control" name="email" maxlength="128" required/>
-        <input type="password" class="form-control" name="password" minlength="8" maxlength="32" required/>
+        <input type="email" class="form-control" name="email" maxlength="128" placeholder="Email" required/>
+        <input type="password" class="form-control" name="password" minlength="8" maxlength="32" placeholder="Password" required/>
         <button type="submit" class="btn btn-success" id="loginBtn">Login</button>
       </form>
     </div>

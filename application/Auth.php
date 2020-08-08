@@ -59,7 +59,7 @@
       // Else validate credentials
       }else{
         $authModel = new authModel();
-        $user_id = $authModel->user_exists();
+        $user_id = $authModel->user_exists($email, $password);
         if($user_id){
           $authLib = new authLib();
           $token = $authLib->generate_token($user_id);
