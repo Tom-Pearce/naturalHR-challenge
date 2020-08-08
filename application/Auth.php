@@ -44,7 +44,7 @@
       if(!$password){
         $errors[] = 'Password is required';
       }else{
-        if(count($password) < 8){
+        if(strlen($password) < 8){
           $errors[] = 'Password must be at least 8 characters';
         }
       }
