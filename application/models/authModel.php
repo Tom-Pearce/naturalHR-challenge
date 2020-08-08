@@ -18,10 +18,10 @@
       $sql = 'SELECT *
         FROM users
         WHERE users.email = \'tom@tom.com\'
-          AND users.password = \'TXM123lol\'
+          AND users.password = \'
           AND users.active = 1';
       $query = $mysqli->prepare($sql);
-      $query->bind_param('ss', $email, $pass);
+      // $query->bind_param('ss', $email, $pass);
       $result = $query->execute();
       echo '<br /><br />mysqli:';
       var_dump($mysqli);
