@@ -3,12 +3,14 @@
   $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
   $segments = explode('/', $path);
 
-  echo '<pre>';
-  var_dump($_SERVER['REQUEST_URI']);
-  var_dump($path);
-  var_dump($segments);
-  // var_dump($path);
-  echo $segments[1];
+  $method = $segments[1];
+  $function = (isset($segments[2])) ? $segments[2] : 'index';
 
-  echo '</pre>';
+  if(file_exists('application/' . $method)){
+    include 'application/' . $method;
+
+    $req = new $method();
+    var_dump($req);
+  }
+
  ?>
