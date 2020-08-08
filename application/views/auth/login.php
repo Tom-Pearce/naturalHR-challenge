@@ -9,14 +9,16 @@
   </div>
 
   <script type="text/javascript">
-    $('#loginForm').submit(function(e){
+    $(document).ready(function(){
+      $('#loginForm').submit(function(e){
 
-      e.preventDefault();
+        e.preventDefault();
 
-      if(this.checkValidity()){
-        alert('win');
-      }else{
-        $(this).addClass('was-validated');
-      }
+        if(this.checkValidity()){
+          alert('win');
+        }else{
+          $(this).addClass('was-validated');
+        }
+      });
     });
   </script>
