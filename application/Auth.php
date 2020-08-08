@@ -17,7 +17,7 @@
     }
 
     function login(){
-      echo include('./views/auth/login.php');
+      echo include('views/auth/login.php');
     }
 
   }
