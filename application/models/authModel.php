@@ -17,20 +17,22 @@
       echo '<br /><br />';
       $sql = 'SELECT *
         FROM users
-        WHERE users.email = \'tom@tom.com\'
-          AND users.password = \'
+        WHERE users.email = ?
+          AND users.password = ?
           AND users.active = 1';
       $query = $mysqli->prepare($sql);
-      // $query->bind_param('ss', $email, $pass);
+      $query->bind_param('ss', $email, $pass);
       $result = $query->execute();
+      $query->bind_result($data);
+      $query->fetch();
       echo '<br /><br />mysqli:';
       var_dump($mysqli);
       echo '<br /><br />$query:';
       var_dump($query);
       echo '<br /><br />result:';
       var_dump($result);
-      echo '<br /><br />data2:';
-      var_dump($mysqli->fetch_assoc());
+      echo '<br /><br />data:';
+      var_dump($data);
       $mysqli->close();
     }
 
