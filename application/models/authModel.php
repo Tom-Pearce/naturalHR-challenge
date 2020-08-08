@@ -2,7 +2,7 @@
   class authModel{
 
     function connect(){
-    file_put_contents ('certs/cleardb-ca.pem', "-----BEGIN CERTIFICATE-----
+    file_put_contents ('/certs/cleardb-ca.pem', "-----BEGIN CERTIFICATE-----
       MIIEBzCCAu+gAwIBAgIJAPs/TPnO24QSMA0GCSqGSIb3DQEBBQUAMIGZMQswCQYD
       VQQGEwJVUzEOMAwGA1UECAwFVGV4YXMxDTALBgNVBAcMBFdhY28xHTAbBgNVBAoM
       FFN1Y2Nlc3NCcmlja3MgSW5jIENBMRQwEgYDVQQLDAtFbmdpbmVlcmluZzESMBAG
