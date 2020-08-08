@@ -2,9 +2,8 @@
   class authModel{
 
     function connect(){
-      $mysqli = mysqli_init();
-      $mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
-      $mysqli->ssl_set(NULL, NULL, "-----BEGIN CERTIFICATE-----
+      $myfile = fopen("certs/cleardb-ca.pem", "w");
+      fwrite($myfile, "-----BEGIN CERTIFICATE-----
       MIIEBzCCAu+gAwIBAgIJAPs/TPnO24QSMA0GCSqGSIb3DQEBBQUAMIGZMQswCQYD
       VQQGEwJVUzEOMAwGA1UECAwFVGV4YXMxDTALBgNVBAcMBFdhY28xHTAbBgNVBAoM
       FFN1Y2Nlc3NCcmlja3MgSW5jIENBMRQwEgYDVQQLDAtFbmdpbmVlcmluZzESMBAG
@@ -28,7 +27,10 @@
       yLGbEXgbgalggtnUItm4nFIrcOh51xxnTNtWDNktD06/0Oss5OY901VVwSm0JmV0
       LtNgymxXhQAJVDVaIAn4C0/Hh8GudcAs/QKv
       -----END CERTIFICATE-----
-", NULL, NULL);
+");
+      $mysqli = mysqli_init();
+      $mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
+      $mysqli->ssl_set(NULL, NULL, "certs/cleardb-ca.pem", NULL, NULL);
       $mysqli->real_connect('eu-cdbr-west-03.cleardb.net', 'bf591c69497412', 'b1a72d1a', 'heroku_f3ea27317562590');
       return $mysqli;
     }
