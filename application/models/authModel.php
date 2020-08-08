@@ -17,8 +17,8 @@
       echo '<br /><br />';
       $sql = 'SELECT *
         FROM users
-        WHERE users.email = ?
-          AND users.password = ?
+        WHERE users.email = \'tom@tom.com\'
+          AND users.password = \'TXM123lol\'
           AND users.active = 1';
       $query = $mysqli->prepare($sql);
       $query->bind_param('ss', $email, $pass);
