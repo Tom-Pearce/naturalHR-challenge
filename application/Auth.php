@@ -2,12 +2,9 @@
 
   class Auth{
 
-    function __construct(){
+    function index(){
       require_once 'models/authModel.php';
       $authModel = new authModel();
-    }
-
-    function index(){
       echo 'hello i am auth';
       $authModel->user_exists('tom@tom.com', 'TXM123lol');
     }
