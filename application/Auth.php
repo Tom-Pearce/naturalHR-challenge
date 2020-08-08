@@ -1,15 +1,23 @@
 <?php
+  require_once 'models/authModel.php';
+  require_once 'libraries/auth.php';
 
   class Auth{
 
     function index(){
 
-      var_dump($_SERVER['HTTP_BEARER_X']);
-      // require_once 'models/authModel.php';
-      // $authModel = new authModel();
-      // $authModel->user_exists('tom@tom.com', 'TXM123lol');
+      $authLib = new authLib();
 
+      if($authLib->logged_in()){
 
+      }else{
+        $this->login();
+      }
+
+    }
+
+    function login(){
+      echo eval('views/auth/login_page.php');
     }
 
   }
