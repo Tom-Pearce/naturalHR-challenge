@@ -29,6 +29,10 @@
       var_dump($query);
       echo '<br /><br />result:';
       var_dump($result);
+      echo '<br /><br />data:';
+      var_dump($result->fetch_assoc());
+      echo '<br /><br />data2:';
+      var_dump($mysqli->fetch_assoc());
       $mysqli->close();
     }
 
