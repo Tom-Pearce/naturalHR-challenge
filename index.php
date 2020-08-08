@@ -6,7 +6,7 @@
   echo $method = $segments[1];
   $function = (isset($segments[2])) ? $segments[2] : 'index';
 
-  if(file_exists('application/' . $method)){
+  if(file_exists('application/' . $method . '.php')){
     include 'application/' . $method;
 
     $req = new $method();
