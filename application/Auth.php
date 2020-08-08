@@ -1,6 +1,6 @@
 <?php
   require_once 'models/authModel.php';
-  require_once 'libraries/auth.php';
+  require_once 'libraries/authLib.php';
 
   class Auth{
 
