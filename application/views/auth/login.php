@@ -9,7 +9,7 @@
   </div>
 
   <script type="text/javascript">
-    $('#loginForm').on('submit', function(e){
+    $('#loginForm').submit(function(e){
 
       e.preventDefault();
 
