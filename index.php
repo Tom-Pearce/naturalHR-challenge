@@ -7,6 +7,8 @@
   $function = (isset($segments[2])) ? $segments[2] : 'index';
   $params = array_slice($segments, 2);
 
+	error_reporting(-1);
+	ini_set('display_errors', 1);
   if(file_exists('application/' . $class . '.php')){
     require_once('application/' . $class . '.php');
 

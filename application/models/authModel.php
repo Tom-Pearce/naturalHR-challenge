@@ -15,14 +15,19 @@
       $mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
       $mysqli->ssl_set(NULL, NULL, "certs/cleardb-ca.pem", NULL, NULL);
       $mysqli->real_connect($this->db_host, $this->db_user, $this->db_pass, $this->db);
-
+      echo '<br /><br />';
+      var_dump($mysqli);
+      echo '<br /><br />';
+      echo '<br /><br />';
       $sql = 'SELECT *
         FROM users
         WHERE users.email = ' . $email . '
           AND users.password = ' . $pass . '
           AND users.active = 1';
       $result = $mysqli->query($sql);
+      echo '<br /><br />';
       var_dump($mysqli);
+      echo '<br /><br />';
       var_dump($result);
       $mysqli->close();
     }
