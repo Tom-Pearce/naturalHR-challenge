@@ -8,7 +8,7 @@
       if($user_id){
 
         // Get current time
-        $timestamp = now();
+        $timestamp = time();
 
         // Generate data array - set expiry to 1 hour from now
         $data = array(
@@ -26,7 +26,7 @@
       if($token){
         $data = json_decode(openssl_encrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03'));
 
-        if(isset($data['expires']) && isset($data['user_id']) && $data['expires'] > now()){
+        if(isset($data['expires']) && isset($data['user_id']) && $data['expires'] > time()){
           return TRUE;
         }else{
           return FALSE;
