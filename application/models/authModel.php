@@ -18,11 +18,15 @@
       $sql = 'SELECT *
         FROM users
         WHERE users.email = ?
-          AND users.password = ?
-          AND users.active = 1';
+          AND users.password = ?';
+          // -- AND users.active = 1
+        // LIMIT 1';
       $query = $mysqli->prepare($sql);
       $query->bind_param('ss', $email, $pass);
       $result = $query->execute();
+      while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+      }
       $data = $query->get_result();
       echo '<br /><br />mysqli:';
       var_dump($mysqli);
@@ -32,6 +36,8 @@
       var_dump($result);
       echo '<br /><br />data:';
       var_dump($data);
+
+      $mysqli->free_result();
       $mysqli->close();
     }
 
