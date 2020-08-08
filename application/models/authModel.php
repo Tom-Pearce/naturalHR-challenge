@@ -39,7 +39,7 @@
       // return $data;
 
       if($result->num_rows == 1){
-        $result = TRUE;
+        $result = $result->fetch_assoc()->id;
       }else{
         $result = FALSE;
       }

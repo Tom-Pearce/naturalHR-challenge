@@ -15,7 +15,34 @@
         e.preventDefault();
 
         if(this.checkValidity()){
-          alert('win');
+
+          var formData = $(this).serialize();
+
+          $.ajax({
+            url: 'https://naturalhr-challenge.herokuapp.com/auth/login_task',
+            type: 'POST',
+            data: formData,
+            success: function(response){
+              var obj = $.parseJSON(response),
+                code = obj.code;
+
+              if(code == -1){
+
+
+              }else{
+
+                var type = obj.type,
+                  title = obj.title,
+                  message = obj.message;
+
+                toastr[type](message, title);
+
+                if(code == 1){
+                  alert(obj.token);
+                }
+              }
+            }
+          });
         }else{
           $(this).addClass('was-validated');
         }
