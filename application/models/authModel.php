@@ -20,11 +20,13 @@
         WHERE users.email = ?
           AND users.password = ?
           AND users.active = 1';
-      $mysqli->prepare($sql);
-      $mysqli->bind_param('ss', $email, $pass);
-      $result = $mysqli->execute();
+      $query = $mysqli->prepare($sql);
+      $query->bind_param('ss', $email, $pass);
+      $result = $query->execute();
       echo '<br /><br />mysqli:';
       var_dump($mysqli);
+      echo '<br /><br />$query:';
+      var_dump($query);
       echo '<br /><br />result:';
       var_dump($result);
       $mysqli->close();
