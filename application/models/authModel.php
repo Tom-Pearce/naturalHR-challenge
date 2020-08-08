@@ -11,34 +11,46 @@
 
     function user_exists($email, $pass){
       $mysqli = $this->connect();
-      echo '<br /><br />';
-      var_dump($mysqli);
-      echo '<br /><br />';
-      echo '<br /><br />';
+
+      // echo '<br /><br />';
+      // var_dump($mysqli);
+      // echo '<br /><br />';
+      // echo '<br /><br />';
+
       $sql = 'SELECT *
         FROM users
         WHERE users.email = ?
-          AND users.password = ?';
-          // -- AND users.active = 1
-        // LIMIT 1';
+          AND users.password = ?
+          AND users.active = 1
+        LIMIT 1';
+
       $query = $mysqli->prepare($sql);
       $query->bind_param('ss', $email, $pass);
       $query->execute();
       $result = $query->get_result();
-      while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-      }
-      echo '<br /><br />mysqli:';
-      var_dump($mysqli);
-      echo '<br /><br />$query:';
-      var_dump($query);
-      echo '<br /><br />result:';
-      var_dump($result);
-      echo '<br /><br />data:';
-      var_dump($data);
 
-      $mysqli->free_result();
+      // if($result->num_rows == 1){
+      //   $data = $result->fetch_assoc();
+      // }else{
+      //   while ($row = $result->fetch_assoc()) {
+      //     $data[] = $row;
+      //   }
+      // }
+      // return $data;
+
+      if($result->num_rows == 1){
+        $result = TRUE;
+      }else{
+        $result = FALSE;
+      }
+
+      // echo '<br /><br />mysqli:'; var_dump($mysqli); echo '<br /><br />$query:'; var_dump($query); echo '<br /><br />result:'; var_dump($result); echo '<br /><br />data:'; var_dump($data);
+
+
+      $query->close();
       $mysqli->close();
+
+      return $result;
     }
 
   }

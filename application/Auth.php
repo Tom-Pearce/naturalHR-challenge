@@ -3,10 +3,13 @@
   class Auth{
 
     function index(){
-      require_once 'models/authModel.php';
-      $authModel = new authModel();
-      echo 'hello i am auth';
-      $authModel->user_exists('tom@tom.com', 'TXM123lol');
+
+      var_dump($_SERVER['HTTP_BEARER_X']);
+      // require_once 'models/authModel.php';
+      // $authModel = new authModel();
+      // $authModel->user_exists('tom@tom.com', 'TXM123lol');
+
+
     }
 
   }
