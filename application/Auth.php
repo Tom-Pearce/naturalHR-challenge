@@ -17,7 +17,10 @@
     }
 
     function login(){
-      echo include('views/auth/login.php');
+      ob_start();
+      include('views/frame/header_view.php');
+      include('views/auth/login.php');
+      ob_end_flush();
     }
 
   }
