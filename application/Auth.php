@@ -9,7 +9,7 @@
 
     function index(){
       echo 'hello i am auth';
-      $this->authModel->user_exists('tom@tom.com', 'TXM123lol');
+      $authModel->user_exists('tom@tom.com', 'TXM123lol');
     }
 
   }
