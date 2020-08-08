@@ -10,7 +10,7 @@
       $mysqli = mysqli_init();
       $mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
       $mysqli->ssl_set(NULL, NULL, "certs/cleardb-ca.pem", NULL, NULL);
-      $mysqli->real_connect($this->db_host, $this->db_user, $this->db_pass, $this->db);
+      $mysqli->real_connect($db_host, $this->db_user, $this->db_pass, $this->db);
       return $mysqli;
     }
 
