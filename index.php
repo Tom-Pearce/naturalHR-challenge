@@ -8,7 +8,7 @@
   var_dump($path);
   var_dump($segments);
   // var_dump($path);
-  echo $segments[0];
+  echo $segments[1];
 
   echo '</pre>';
  ?>
