@@ -23,8 +23,7 @@
       $query = $mysqli->prepare($sql);
       $query->bind_param('ss', $email, $pass);
       $result = $query->execute();
-      $query->bind_result($data);
-      $query->fetch();
+      $data = $query->get_result();
       echo '<br /><br />mysqli:';
       var_dump($mysqli);
       echo '<br /><br />$query:';
