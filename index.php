@@ -7,7 +7,7 @@
   $function = (isset($segments[2])) ? $segments[2] : 'index';
 
   if(file_exists('application/' . $method . '.php')){
-    include 'application/' . $method;
+    require_once('application/' . $method . '.php');
 
     $req = new $method();
     var_dump($req);
