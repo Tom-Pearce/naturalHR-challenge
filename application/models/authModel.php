@@ -17,13 +17,15 @@
       echo '<br /><br />';
       $sql = 'SELECT *
         FROM users
-        WHERE users.email = ' . $email . '
-          AND users.password = ' . $pass . '
+        WHERE users.email = ?
+          AND users.password = ?
           AND users.active = 1';
-      $result = $mysqli->query($sql);
-      echo '<br /><br />';
+      $mysqli->prepare($sql);
+      $mysqli->bind_param('ss', $email, $pass);
+      $result = $mysqli->execute();
+      echo '<br /><br />mysqli:';
       var_dump($mysqli);
-      echo '<br /><br />';
+      echo '<br /><br />result:';
       var_dump($result);
       $mysqli->close();
     }
