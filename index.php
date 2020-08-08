@@ -11,6 +11,8 @@
 
     $req = new $method();
     var_dump($req);
+  }else{
+    echo 'hello2';
   }
 
  ?>
