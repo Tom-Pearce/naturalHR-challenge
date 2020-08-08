@@ -2,8 +2,7 @@
   class authModel{
 
     function connect(){
-      $myfile = fopen("certs/cleardb-ca.pem", "w");
-      fwrite($myfile, "-----BEGIN CERTIFICATE-----
+    file_put_contents ('certs/cleardb-ca.pem', "-----BEGIN CERTIFICATE-----
       MIIEBzCCAu+gAwIBAgIJAPs/TPnO24QSMA0GCSqGSIb3DQEBBQUAMIGZMQswCQYD
       VQQGEwJVUzEOMAwGA1UECAwFVGV4YXMxDTALBgNVBAcMBFdhY28xHTAbBgNVBAoM
       FFN1Y2Nlc3NCcmlja3MgSW5jIENBMRQwEgYDVQQLDAtFbmdpbmVlcmluZzESMBAG
@@ -26,8 +25,7 @@
       8n8N9J15Rpp6Am/y+dVEXquUf0Qj7l67ElIgDByBitV4AVUnmmu7C/Kn+GzTKFet
       yLGbEXgbgalggtnUItm4nFIrcOh51xxnTNtWDNktD06/0Oss5OY901VVwSm0JmV0
       LtNgymxXhQAJVDVaIAn4C0/Hh8GudcAs/QKv
-      -----END CERTIFICATE-----
-");
+      -----END CERTIFICATE-----");
       $mysqli = mysqli_init();
       $mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
       $mysqli->ssl_set(NULL, NULL, "certs/cleardb-ca.pem", NULL, NULL);
