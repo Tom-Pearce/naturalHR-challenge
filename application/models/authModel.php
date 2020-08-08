@@ -4,7 +4,7 @@
     function connect(){
       $mysqli = mysqli_init();
       $mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, TRUE);
-      $mysqli->ssl_set(NULL, NULL, NULL, "certs/cleardb-ca.pem", NULL);
+      $mysqli->ssl_set(NULL, NULL, NULL, "certs/bf591c69497412-cert.pem", NULL);
       $mysqli->real_connect('eu-cdbr-west-03.cleardb.net', 'bf591c69497412', 'b1a72d1a', 'heroku_f3ea27317562590');
       return $mysqli;
     }
