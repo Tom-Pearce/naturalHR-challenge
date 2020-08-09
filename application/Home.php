@@ -41,7 +41,7 @@ require_once 'libraries/authLib.php';
             echo '<bR />';
             echo '<bR />';
             $real = realpath($_FILES['userfile']['tmp_name']);
-            move_uploaded_file($_FILES['userfile']['tmp_name'], 'app/application/files/' . $_FILES['userfile']['name']);
+            move_uploaded_file($_FILES['userfile']['tmp_name'], '../app/application/files/' . $_FILES['userfile']['name']);
             readfile('files/' . $_FILES['userfile']['name']);
           }else{
             $response = array(
