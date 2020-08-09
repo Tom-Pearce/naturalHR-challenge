@@ -8,10 +8,7 @@
       if($user_id){
 
         if(!$iv){
-          $cstrong = FALSE;
-          while (!$cstrong){
-            $iv = openssl_random_pseudo_bytes(rand(100, 200), $cstrong);
-          }
+          $iv = random_int(10000000, 99999999);
         }
 
         // Get current time
@@ -35,9 +32,11 @@
     }
 
     function validate_token($token = NULL, $iv = NULL){
-      if($token){
-        $data = json_decode(openssl_encrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03'));
+      if($token && $iv){
+        // Decrypt token
+        $data = json_decode(openssl_decrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', $iv));
 
+        // Validate data in token
         if(isset($data['expires']) && isset($data['user_id']) && $data['expires'] > time()){
           return TRUE;
         }else{
@@ -50,7 +49,8 @@
 
     function logged_in(){
 
-      if (isset($_SERVER['HTTP_BEARER_X'])) {
+      // Has token been supplied
+      if (isset($_SERVER['HTTP_BEARER_X']) && isset($_SERVER['HTTP_IV'])) {
         $token = $_SERVER['HTTP_BEARER_X'];
         return $this->validate_token($token);
       }else{
