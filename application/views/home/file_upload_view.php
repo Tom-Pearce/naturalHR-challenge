@@ -30,7 +30,7 @@
 
       var fileData = $('#fileUpload').prop('files')[0];
       console.log(fileData);
-      fData = new formData();
+      fData = new FormData();
       fData.append('userfile', fileData);
       $.ajax({
         url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
