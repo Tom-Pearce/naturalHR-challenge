@@ -25,6 +25,7 @@
 
 <script type="text/text/javascript">
   $(document).ready(function(){
+    console.log('hello');
     $('#fileUploadForm').submit(function(e){
       alert('hello');
       e.preventDefault();
