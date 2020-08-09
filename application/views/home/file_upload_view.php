@@ -35,6 +35,9 @@
       $.ajax({
         url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
         type: 'POST',
+        cache: false,
+        contentType: false,
+        processData: false,
         data: {
           'userfile' : fileData,
         },
@@ -57,7 +60,7 @@
             toastr[type](message, title);
 
             if(code == 1){
-
+              
             }
           }
         }
