@@ -24,7 +24,7 @@
         );
 
         $token_data = array(
-          'token' => openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv),
+          'token' => openssl_encrypt(json_encode($data), "AES-256-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv),
           'iv' => $iv,
         );
 
