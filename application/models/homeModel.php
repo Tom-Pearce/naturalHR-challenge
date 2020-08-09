@@ -37,6 +37,8 @@
 
       $sql = 'SELECT *
         FROM user_files AS file
+        JOIN users
+          ON users.id = file.user_id
         WHERE file.status = 1';
 
       $result = $mysqli->query($sql);
