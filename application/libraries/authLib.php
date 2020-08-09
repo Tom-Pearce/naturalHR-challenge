@@ -10,7 +10,7 @@
         if(!$iv){
           $cstrong = FALSE;
           while (!$cstrong){
-            $iv = openssl_random_pseudo_bytes(rand(100, 200), $cstrong);
+            $iv = openssl_random_pseudo_bytes(16, $cstrong);
           }
         }
 
