@@ -1,5 +1,6 @@
 <?php
 require_once 'libraries/authLib.php';
+require_once 'models/homeModel.php';
   class Home{
 
     function index(){
@@ -18,8 +19,7 @@ require_once 'libraries/authLib.php';
     function upload_file(){
 
       $authLib = new authLib();
-      var_dump($_FILES);
-      if($authLib->logged_in()){
+      if($user_id = $authLib->logged_in()){
         if(0 < $_FILES['userfile']['error']){
           $response = array(
             'code' => 0,
@@ -36,12 +36,14 @@ require_once 'libraries/authLib.php';
             'application/msword'
           );
           if(in_array(mime_content_type($_FILES['userfile']['tmp_name']), $allowed_types)){
-            echo '<bR />';
-            echo '<bR />';
-            echo '<bR />';
-            echo '<bR />';
-            $real = realpath($_FILES['userfile']['tmp_name']);
-            move_uploaded_file($_FILES['userfile']['tmp_name'], 'application/files/' . $_FILES['userfile']['name']);
+
+            $file_data = pathinfo($_FILES['userfile']['tmp_name']);
+            $extension = $file_data['extension'];
+
+            $homeModel = new homeModel();
+            $file_id = $homeModel->insert_user_file($user_id, $_FILES['userfile']['name'], $extension);
+
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'application/files/' . $file_id);
             readfile('application/files/' . $_FILES['userfile']['name']);
           }else{
             $response = array(

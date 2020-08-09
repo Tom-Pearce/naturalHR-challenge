@@ -74,8 +74,8 @@
           // IF token Successfully generated - return data otherwise display error
           if($token){
 
-            setcookie('BEARER', $token['token']);
-            setcookie('BEARER-IV', $token['iv']);
+            setcookie('BEARER', $token['token'], NULL, NULL, 'https://naturalhr-challenge.herokuapp.com/');
+            setcookie('BEARER-IV', $token['iv'], NULL, NULL, 'https://naturalhr-challenge.herokuapp.com/');
 
             $response = array(
               'code' => 1,

@@ -78,8 +78,8 @@
                 toastr[type](message, title);
 
                 if(code == 1){
-                  token = obj.token_data.token;
-                  tokenIv = obj.token_data.iv;
+                  // token = obj.token_data.token;
+                  // tokenIv = obj.token_data.iv;
                   loadHome();
                 }
               }

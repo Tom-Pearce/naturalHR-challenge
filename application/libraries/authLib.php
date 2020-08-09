@@ -41,7 +41,7 @@
 
         // Validate data in token
         if(isset($data->expires) && isset($data->user_id) && $data->expires > time()){
-          return TRUE;
+          return $data->user_id;
         }else{
           return FALSE;
         }
@@ -51,7 +51,7 @@
     }
 
     function logged_in(){
-
+      var_dump($_COOKIE);
       if(isset($_COOKIE['BEARER']) && isset($_COOKIE['BEARER-IV'])){
         $token = $_COOKIE['BEARER'];
         $iv = $_COOKIE['BEARER-IV'];
