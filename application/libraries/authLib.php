@@ -56,9 +56,9 @@
       if (isset($_SERVER['HTTP_BEARER_X']) && isset($_SERVER['HTTP_IV'])) {
         $token = $_SERVER['HTTP_BEARER_X'];
         $iv = $_SERVER['HTTP_IV'];
-        var_dump($this->validate_token($token, $iv));
+        // Return result of token validation
+        return $this->validate_token($token, $iv);
       }else{
-        echo 'hello 1';
         return FALSE;
       }
     }

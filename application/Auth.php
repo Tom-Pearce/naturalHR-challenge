@@ -64,8 +64,10 @@
         $user_id = $authModel->user_exists($email, $password);
         if($user_id){
           $authLib = new authLib();
+          // Generate a token for the user to validate future requests
           $token = $authLib->generate_token($user_id);
 
+          // IF token Successfully generated - return data otherwise display error
           if($token){
             $response = array(
               'code' => 1,

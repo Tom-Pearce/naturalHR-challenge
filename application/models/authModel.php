@@ -12,11 +12,6 @@
     function user_exists($email, $pass){
       $mysqli = $this->connect();
 
-      // echo '<br /><br />';
-      // var_dump($mysqli);
-      // echo '<br /><br />';
-      // echo '<br /><br />';
-
       $sql = 'SELECT *
         FROM users
         WHERE users.email = ?
@@ -43,9 +38,6 @@
       }else{
         $result = FALSE;
       }
-
-      // echo '<br /><br />mysqli:'; var_dump($mysqli); echo '<br /><br />$query:'; var_dump($query); echo '<br /><br />result:'; var_dump($result); echo '<br /><br />data:'; var_dump($data);
-
 
       $query->close();
       $mysqli->close();
