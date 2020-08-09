@@ -60,6 +60,7 @@
       // Else validate credentials
       }else{
         $authModel = new authModel();
+        // Get user ID
         $user_id = $authModel->user_exists($email, $password);
         if($user_id){
           $authLib = new authLib();
@@ -87,8 +88,8 @@
           );
         }
       }
-
       echo json_encode($response);
+      echo 'hello world';
     }
 
   }
