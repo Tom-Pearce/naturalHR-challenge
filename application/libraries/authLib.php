@@ -25,7 +25,7 @@
 
         $token_data = array(
           'token' => openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv),
-          'iv' => utf_8_encode($iv),
+          'iv' => utf8_encode($iv),
         );
 
         return $token_data;
@@ -37,7 +37,7 @@
     function validate_token($token = NULL, $iv = NULL){
       if($token && $iv){
         // Decrypt token
-        $data = json_decode(openssl_decrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, utf_8_decodE($iv)));
+        $data = json_decode(openssl_decrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, utf8_decode($iv)));
 
         // Validate data in token
         if(isset($data['expires']) && isset($data['user_id']) && $data['expires'] > time()){
