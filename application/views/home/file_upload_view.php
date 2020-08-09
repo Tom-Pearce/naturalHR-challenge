@@ -36,6 +36,10 @@
       url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
       type: 'POST',
       data: formData,
+      headers: {
+        'BEARER-X' : token,
+        'IV' : tokenIv,
+      },
       success: function(response){
         var obj = $.parseJSON(response),
           code = obj.code;
