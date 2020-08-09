@@ -20,7 +20,7 @@ require_once 'models/homeModel.php';
 
       $authLib = new authLib();
       if($user_id = $authLib->logged_in()){
-        var_dump($user_id);
+
         if(0 < $_FILES['userfile']['error']){
           $response = array(
             'code' => 0,
@@ -51,6 +51,8 @@ require_once 'models/homeModel.php';
             );
           }
         }
+
+        echo json_encode($response);
       }else{
         http_response_code(401);
       }
