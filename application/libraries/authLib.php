@@ -57,6 +57,7 @@
         $token = $_SERVER['HTTP_BEARER_X'];
         return $this->validate_token($token);
       }else{
+        echo 'hello 1';
         return FALSE;
       }
     }
