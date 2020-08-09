@@ -15,7 +15,7 @@ require_once 'libraries/authLib.php';
       }
     }
 
-    function file_upload(){
+    function upload_file(){
 
       $authLib = new authLib();
 
