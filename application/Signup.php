@@ -4,12 +4,13 @@ require_once 'models/authModel.php';
     function task(){
       $errors = array();
 
+      $authModel = new authModel();
       // Get POST variables
-      $first_name = $_POST['first_name'];
-      $last_name = $_POST['last_name'];
-      $email = $_POST['email'];
-      $password = $_POST['password'];
-      $password_confirm = $_POST['password_confirm'];
+      $first_name = trim($_POST['first_name']);
+      $last_name = trim($_POST['last_name']);
+      $email = trim($_POST['email']);
+      $password = trim($_POST['password']);
+      $password_confirm = trim($_POST['password_confirm']);
 
       // Validate First Name
       if(!$first_name){
@@ -38,6 +39,10 @@ require_once 'models/authModel.php';
         }
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
           $errors[] = 'Please enter a valid email';
+        }
+
+        if($authModel->email_in_use($email)){
+          $errors[] = 'Email in use. Please enter a unique email.';
         }
       }
 
@@ -76,7 +81,6 @@ require_once 'models/authModel.php';
 
       // Else validate credentials
       }else{
-        $authModel = new authModel();
         if($authModel->create_user($first_name, $last_name, $email, $password)){
           $response = array(
             'code' => 1,
