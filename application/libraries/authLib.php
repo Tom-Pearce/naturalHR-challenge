@@ -51,7 +51,6 @@
     }
 
     function logged_in(){
-      var_dump($_COOKIE);
       if(isset($_COOKIE['BEARER']) && isset($_COOKIE['BEARER-IV'])){
         $token = $_COOKIE['BEARER'];
         $iv = $_COOKIE['BEARER-IV'];
