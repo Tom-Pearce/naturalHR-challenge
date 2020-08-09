@@ -18,7 +18,7 @@ require_once 'libraries/authLib.php';
     function upload_file(){
 
       $authLib = new authLib();
-var_dump($_FILES);
+      var_dump($_FILES);
       if($authLib->logged_in()){
         if(0 < $_FILES['userfile']['error']){
           $response = array(

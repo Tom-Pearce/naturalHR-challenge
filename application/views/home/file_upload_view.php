@@ -30,14 +30,17 @@
 
       var fileData = $('#fileUpload').prop('files')[0];
       console.log(fileData);
-      var formData = $(this).serialize();
+      var formData = $(this).serializeArray();
+      formData.append('file', fileData);
       $.ajax({
         url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
         type: 'POST',
         cache: false,
         contentType: false,
         processData: false,
-        data: formData,
+        data: {
+          'file' : fileData,
+        },
         headers: {
           'BEARER-X' : token,
           'IV' : tokenIv,
