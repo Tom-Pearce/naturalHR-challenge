@@ -11,4 +11,4 @@
   <body>
     <div class="d-flex justify-content-center align-items-center mt-5 h-100">
 
-      <div id="main">
+      <div id="main" class="w-50">

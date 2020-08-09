@@ -45,5 +45,45 @@
       return $result;
     }
 
+    function email_in_use($email){
+      $mysqli = $this->connect();
+
+      $sql = 'SELECT *
+        FROM users
+        WHERE users.email = ?
+        LIMIT 1';
+
+      $query = $mysqli->prepare($sql);
+      $query->bind_param('s', $email );
+      $query->execute();
+      $result = $query->get_result();
+      $num_rows = $result->num_rows;
+
+      $query->close();
+      $mysqli->close();
+      return $num_rows;
+    }
+
+    function create_user($first_name, $last_name, $email, $password){
+      $mysqli = $this->connect();
+
+      $sql = 'INSERT
+        INTO users (first_name, last_name, email, password)
+        VALUES (?, ?, ?, ?)
+      ';
+
+      $query = $mysqli->prepare($sql);
+      $query->bind_param('ssss', $first_name, $last_name, $email, $password);
+      $query->execute();
+      $result = $query->get_result();
+      $num_rows = $result->num_rows;
+      var_dump($query);
+      echo '<br /><bR />';
+      var_dump($result);
+      $query->close();
+      $mysqli->close();
+      return $num_rows;
+    }
+
   }
  ?>
