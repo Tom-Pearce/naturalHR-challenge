@@ -9,4 +9,6 @@
       crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="main">
+    <div class="d-flex justify-content-center align-items-center mt-5 h-100">
+
+      <div id="main">
