@@ -36,16 +36,11 @@ require_once 'libraries/authLib.php';
             'application/msword'
           );
           if(in_array(mime_content_type($_FILES['userfile']['tmp_name']), $allowed_types)){
-            $cwd = getcwd();
-            echo '<bR />';
-            echo '<bR />';
-            echo '<bR />';
-            var_dump($cwd);
             echo '<bR />';
             echo '<bR />';
             echo '<bR />';
             echo '<bR />';
-            $real = realpath(dirname(getcwd()));
+            $real = realpath($_FILES['userfile']['tmp_name']);
             var_dump($real);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'files/' . $_FILES['userfile']['name']);
           }else{
