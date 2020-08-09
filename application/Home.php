@@ -58,5 +58,16 @@ require_once 'models/homeModel.php';
         http_response_code(401);
       }
     }
+
+    function file_list(){
+      $authLib = new authLib();
+      if($user_id = $authLib->logged_in()){
+
+        $homeModel = new homeModel();
+        $files = $homeModel->list_uploaded_files();
+      }else{
+        http_response_code(401);
+      }
+    }
   }
 ?>

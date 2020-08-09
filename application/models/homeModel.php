@@ -32,5 +32,31 @@
       }
     }
 
+    function list_uploaded_files(){
+      $mysqli = $this->connect();
+
+      $sql = 'SELECT *
+        FROM user_files AS file
+        WHERE file.status = 1';
+
+      $result = $mysqli->query($sql);
+      var_dump($result);
+      $result = $mysqli->get_result();
+      var_dump($result);
+
+      // if($result->num_rows == 1){
+      //   $data = $result->fetch_assoc();
+      // }else{
+      //   while ($row = $result->fetch_assoc()) {
+      //     $data[] = $row;
+      //   }
+      // }
+
+      $query->close();
+      $mysqli->close();
+
+      // return $data;
+    }
+
   }
 ?>
