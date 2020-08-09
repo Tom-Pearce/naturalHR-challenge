@@ -11,7 +11,7 @@
 
     function user_exists($email, $pass){
       $mysqli = $this->connect();
-
+      $pass = openssl_encrypt($pass, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, 'ec2724f0a353ad7c');
       $sql = 'SELECT *
         FROM users
         WHERE users.email = ?
@@ -71,18 +71,17 @@
         INTO users (first_name, last_name, email, password)
         VALUES (?, ?, ?, ?)
       ';
-
+      $password = openssl_encrypt($password, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, 'ec2724f0a353ad7c');
       $query = $mysqli->prepare($sql);
       $query->bind_param('ssss', $first_name, $last_name, $email, $password);
       $query->execute();
-      $result = $query->get_result();
-      $num_rows = $result->num_rows;
-      var_dump($query);
-      echo '<br /><bR />';
-      var_dump($result);
+      $query->get_result();
+      $affected_rows = $query->affected_rows;
+      $user_id = $query->insert_id;
+
       $query->close();
       $mysqli->close();
-      return $num_rows;
+      return $affected_rows;
     }
 
   }

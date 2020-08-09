@@ -32,7 +32,7 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-sucess float-right">Signup!</button>
+        <button type="submit" class="btn btn-success float-right">Signup!</button>
       </form>
     </div>
   </div>
