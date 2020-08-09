@@ -57,10 +57,10 @@
         $.ajax({
           url: 'https://naturalhr-challenge.herokuapp.com/home',
           type: 'GET',
-          headers: {
-            'BEARER-X' : token,
-            'IV' : tokenIv,
-          },
+          // headers: {
+          //   'BEARER-X' : token,
+          //   'IV' : tokenIv,
+          // },
           success: function(response){
             $('#main').html(response);
           }

@@ -52,15 +52,23 @@
 
     function logged_in(){
 
+      if(isset($_COOKIE['BEARER']) && isset($_COOKIE['BEARER-IV'])){
+        $token = $_COOKIE['BEARER'];
+        $iv = $_COOKIE['BEARER-IV'];
+        return $this->validate_token($token, $iv);
+      }else{
+        return FALSE;
+      }
+
       // Has token been supplied
-      if (isset($_SERVER['HTTP_BEARER_X']) && isset($_SERVER['HTTP_IV'])) {
+      /*if (isset($_SERVER['HTTP_BEARER_X']) && isset($_SERVER['HTTP_IV'])) {
         $token = $_SERVER['HTTP_BEARER_X'];
         $iv = $_SERVER['HTTP_IV'];
         // Return result of token validation
         return $this->validate_token($token, $iv);
       }else{
         return FALSE;
-      }
+      }*/
     }
 
   }

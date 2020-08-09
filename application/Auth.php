@@ -11,7 +11,11 @@
       if($authLib->logged_in()){
         require_once 'Home.php';
         $home = new Home();
+        ob_start();
+        include('views/frame/header_view.php');
         $home->index();
+        include('views/frame/footer_view.php');
+        ob_end_flush();
       }else{
         ob_start();
         include('views/frame/header_view.php');
@@ -69,12 +73,16 @@
 
           // IF token Successfully generated - return data otherwise display error
           if($token){
+
+            setcookie('BEARER', $token['token']);
+            setcookie('BEARER-IV', $token['iv']);
+
             $response = array(
               'code' => 1,
               'type' => 'success',
               'title' => 'Success',
               'message' => 'Successfully logged in.',
-              'token_data' => $token,
+              // 'token_data' => $token,
             );
           }else{
             $response = array(
