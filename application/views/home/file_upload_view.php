@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<script type="text/text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
     console.log('hello');
     $('#fileUploadForm').submit(function(e){
