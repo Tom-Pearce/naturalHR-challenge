@@ -40,20 +40,15 @@
         WHERE file.status = 1';
 
       $result = $mysqli->query($sql);
-      var_dump($result);
-      // $result = $mysqli->get_result();
-      // var_dump($result);
 
       $data = array();
       while ($row = $result->fetch_assoc()) {
         $data[] = $row;
       }
-      var_dump($data);
 
-      $query->close();
       $mysqli->close();
 
-      // return $data;
+      return $data;
     }
 
   }

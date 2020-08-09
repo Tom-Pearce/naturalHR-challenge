@@ -64,7 +64,12 @@ require_once 'models/homeModel.php';
       if($user_id = $authLib->logged_in()){
 
         $homeModel = new homeModel();
-        $files = $homeModel->list_uploaded_files();
+        $data['files'] = $homeModel->list_uploaded_files();
+
+        ob_start();
+        extract($data);
+        include('views/home/file_list_view.php');
+        ob_end_flush();
       }else{
         http_response_code(401);
       }
