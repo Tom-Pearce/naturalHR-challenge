@@ -17,7 +17,7 @@
         VALUES (?, ?, ?)
       ';
       $query = $mysqli->prepare($sql);
-      $query->bind_param('ss', $user_id, $file_name);
+      $query->bind_param('is', $user_id, $file_name);
       $query->execute();
       $query->get_result();
       $affected_rows = $query->affected_rows;

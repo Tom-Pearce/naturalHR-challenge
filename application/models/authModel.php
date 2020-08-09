@@ -11,6 +11,8 @@
 
     function user_exists($email, $pass){
       $mysqli = $this->connect();
+
+      // Encrypt password before running query - databse passwords encrypted
       $pass = openssl_encrypt($pass, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, 'ec2724f0a353ad7c');
       $sql = 'SELECT *
         FROM users
@@ -24,15 +26,6 @@
       $query->execute();
       $result = $query->get_result();
 
-      // if($result->num_rows == 1){
-      //   $data = $result->fetch_assoc();
-      // }else{
-      //   while ($row = $result->fetch_assoc()) {
-      //     $data[] = $row;
-      //   }
-      // }
-      // return $data;
-
       if($result->num_rows == 1){
         $result = $result->fetch_assoc()['id'];
       }else{
@@ -45,6 +38,7 @@
       return $result;
     }
 
+    // Check if email is already used
     function email_in_use($email){
       $mysqli = $this->connect();
 
@@ -64,6 +58,7 @@
       return $num_rows;
     }
 
+    // Create user record
     function create_user($first_name, $last_name, $email, $password){
       $mysqli = $this->connect();
 
@@ -71,6 +66,8 @@
         INTO users (first_name, last_name, email, password)
         VALUES (?, ?, ?, ?)
       ';
+
+      // Encrypt password
       $password = openssl_encrypt($password, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, 'ec2724f0a353ad7c');
       $query = $mysqli->prepare($sql);
       $query->bind_param('ssss', $first_name, $last_name, $email, $password);
