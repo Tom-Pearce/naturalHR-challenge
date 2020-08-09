@@ -16,6 +16,9 @@
               </div>
             </form>
           </div>
+          <div class="col-6" id="fileListArea">
+
+          </div>
         </div>
 
       </div>
@@ -25,6 +28,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    loadFileList();
     $('#fileUploadForm').submit(function(e){
       e.preventDefault();
 
@@ -64,5 +68,9 @@
         }
       })
     });
+
+    function loadFileList(){
+      $('#fileListArea').load('https://naturalhr-challenge.herokuapp.com/home/file_list');
+    }
   });
 </script>
