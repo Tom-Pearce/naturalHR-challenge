@@ -14,8 +14,7 @@
 
       $sql = 'INSERT
         INTO user_files (user_id, file_name)
-        VALUES (?, ?, ?)
-      ';
+        VALUES (?, ?)';
       $query = $mysqli->prepare($sql);
       $query->bind_param('ss', $user_id, $file_name);
       $query->execute();
