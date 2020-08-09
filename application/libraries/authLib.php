@@ -40,7 +40,7 @@
         $data = json_decode(openssl_decrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv));
 
         // Validate data in token
-        if(isset($data['expires']) && isset($data['user_id']) && $data['expires'] > time()){
+        if(isset($data->expires) && isset($data->user_id) && $data->expires > time()){
           return TRUE;
         }else{
           return FALSE;
