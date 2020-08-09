@@ -69,6 +69,9 @@
           if($token){
             $response = array(
               'code' => 1,
+              'type' => 'success',
+              'title' => 'Success',
+              'message' => 'Successfully logged in.',
               'token_data' => $token,
             );
           }else{
