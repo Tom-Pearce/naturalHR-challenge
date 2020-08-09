@@ -9,7 +9,7 @@
             <form id="fileUploadForm">
               <div class="input-group">
 
-                <input type="file" class="form-control" id="fileUpload" required />
+                <input type="file" class="form-control" id="fileUpload" name="file" required />
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-success">Upload!</button>
                 </div>
@@ -26,12 +26,13 @@
 <script type="text/text/javascript">
 
   $('#fileUploadForm').submit(function(e){
+    alert('hello');
     e.preventDefault();
 
     var fileData = $('#fileUpload').prop('files')[0];
     var formData = new formData('')
     formData.append('userfile', fileData);
-
+    alert(formData);
     $.ajax({
       url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
       type: 'POST',
