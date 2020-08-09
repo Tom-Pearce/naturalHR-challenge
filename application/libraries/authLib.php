@@ -8,7 +8,10 @@
       if($user_id){
 
         if(!$iv){
-          $iv = random_int(10000000, 99999999);
+          $cstrong = FALSE;
+          while (!$cstrong){
+            $iv = openssl_random_pseudo_bytes(rand(100, 200), $cstrong);
+          }
         }
 
         // Get current time
@@ -21,7 +24,7 @@
         );
 
         $response = array(
-          'token' => $token = openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', $iv),
+          'token' => $token = openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv),
           'iv' => $iv,
         );
 
@@ -34,7 +37,7 @@
     function validate_token($token = NULL, $iv = NULL){
       if($token && $iv){
         // Decrypt token
-        $data = json_decode(openssl_decrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', $iv));
+        $data = json_decode(openssl_decrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv));
 
         // Validate data in token
         if(isset($data['expires']) && isset($data['user_id']) && $data['expires'] > time()){
