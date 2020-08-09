@@ -9,15 +9,15 @@
       return $mysqli;
     }
 
-    function insert_user_file($user_id, $file_name, $ext){
+    function insert_user_file($user_id, $file_name){
       $mysqli = $this->connect();
 
       $sql = 'INSERT
-        INTO user_files (user_id, file_name, file_extension)
+        INTO user_files (user_id, file_name)
         VALUES (?, ?, ?)
       ';
       $query = $mysqli->prepare($sql);
-      $query->bind_param('sss', $user_id, $file_name, $ext);
+      $query->bind_param('sss', $user_id, $file_name);
       $query->execute();
       $query->get_result();
       $affected_rows = $query->affected_rows;

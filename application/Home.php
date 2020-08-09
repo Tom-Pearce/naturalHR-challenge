@@ -37,14 +37,10 @@ require_once 'models/homeModel.php';
           );
           if(in_array(mime_content_type($_FILES['userfile']['tmp_name']), $allowed_types)){
 
-            $file_data = pathinfo($_FILES['userfile']['tmp_name']);
-            $extension = $file_data['extension'];
-
             $homeModel = new homeModel();
-            $file_id = $homeModel->insert_user_file($user_id, $_FILES['userfile']['name'], $extension);
+            $file_id = $homeModel->insert_user_file($user_id, $_FILES['userfile']['name']);
 
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'application/files/' . $file_id);
-            readfile('application/files/' . $_FILES['userfile']['name']);
           }else{
             $response = array(
               'code' => 0,
