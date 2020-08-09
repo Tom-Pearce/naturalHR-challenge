@@ -24,42 +24,43 @@
 </div>
 
 <script type="text/text/javascript">
+  $(document).ready(function(){
+    $('#fileUploadForm').submit(function(e){
+      alert('hello');
+      e.preventDefault();
 
-  $('#fileUploadForm').submit(function(e){
-    alert('hello');
-    e.preventDefault();
+      var fileData = $('#fileUpload').prop('files')[0];
+      var formData = new formData('')
+      formData.append('userfile', fileData);
+      alert(formData);
+      $.ajax({
+        url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
+        type: 'POST',
+        data: formData,
+        headers: {
+          'BEARER-X' : token,
+          'IV' : tokenIv,
+        },
+        success: function(response){
+          var obj = $.parseJSON(response),
+            code = obj.code;
 
-    var fileData = $('#fileUpload').prop('files')[0];
-    var formData = new formData('')
-    formData.append('userfile', fileData);
-    alert(formData);
-    $.ajax({
-      url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
-      type: 'POST',
-      data: formData,
-      headers: {
-        'BEARER-X' : token,
-        'IV' : tokenIv,
-      },
-      success: function(response){
-        var obj = $.parseJSON(response),
-          code = obj.code;
+          if(code == -1){
+            displayValidationErrors(obj.errors);
+          }else{
 
-        if(code == -1){
-          displayValidationErrors(obj.errors);
-        }else{
+            var type = obj.type,
+              title = obj.title,
+              message = obj.message;
 
-          var type = obj.type,
-            title = obj.title,
-            message = obj.message;
+            toastr[type](message, title);
 
-          toastr[type](message, title);
+            if(code == 1){
 
-          if(code == 1){
-
+            }
           }
         }
-      }
-    })
+      })
+    });
   });
 </script>
