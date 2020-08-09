@@ -36,6 +36,7 @@ require_once 'models/homeModel.php';
             'image/jpeg',
             'application/msword'
           );
+          var_dump(mime_content_type($_FILES['userfile']['tmp_name']));
           if(in_array(mime_content_type($_FILES['userfile']['tmp_name']), $allowed_types)){
 
             $homeModel = new homeModel();
