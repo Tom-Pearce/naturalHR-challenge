@@ -5,42 +5,44 @@
 
           <div class="row">
             <div class="col-6 border-right border-info">
-              <h3 class="fon-weight-light">Existing User</h3>
+              <h3 class="font-weight-light">Existing User</h3>
               <form id="loginForm">
                 <input type="email" class="form-control mb-2" name="email" maxlength="128" placeholder="Email" required/>
                 <input type="password" class="form-control mb-2" name="password" minlength="8" maxlength="32" placeholder="Password" required/>
                 <button type="submit" class="btn btn-success float-right" id="loginBtn">Login</button>
               </form>
             </div>
-            <div class="col-6" id="signUpArea">
-              <h3 class="fon-weight-light">New User</h3>
-              <form id="signupForm">
-                <div class="row mb-2">
-                  <div class="col-6">
-                    <input type="text" class="form-control" name="first_name" maxlength="64" placeholder="First Name" required/>
+            <div class="col-6" >
+              <h3 class="font-weight-light">New User</h3>
+              <div id="signUpArea">
+                <form id="signupForm">
+                  <div class="row mb-2">
+                    <div class="col-6">
+                      <input type="text" class="form-control" name="first_name" maxlength="64" placeholder="First Name" required/>
+                    </div>
+                    <div class="col-6">
+                      <input type="text" class="form-control" name="last_name" maxlength="64" placeholder="Last Name" required/>
+                    </div>
                   </div>
-                  <div class="col-6">
-                    <input type="text" class="form-control" name="last_name" maxlength="64" placeholder="Last Name" required/>
-                  </div>
-                </div>
 
-                <div class="row mb-2">
-                  <div class="col-12">
-                    <input type="email" class="form-control" name="email" maxlength="128" placeholder="Email" required/>
+                  <div class="row mb-2">
+                    <div class="col-12">
+                      <input type="email" class="form-control" name="email" maxlength="128" placeholder="Email" required/>
+                    </div>
                   </div>
-                </div>
 
-                <div class="row mb-2">
-                  <div class="col-6">
-                    <input type="password" class="form-control" name="password" maxlength="64" placeholder="Password" required/>
+                  <div class="row mb-2">
+                    <div class="col-6">
+                      <input type="password" class="form-control" name="password" maxlength="64" placeholder="Password" required/>
+                    </div>
+                    <div class="col-6">
+                      <input type="password" class="form-control" name="password_confirm" maxlength="64" placeholder="Confirm Password" required/>
+                    </div>
                   </div>
-                  <div class="col-6">
-                    <input type="password" class="form-control" name="password_confirm" maxlength="64" placeholder="Confirm Password" required/>
-                  </div>
-                </div>
 
-                <button type="submit" class="btn btn-success float-right">Signup!</button>
-              </form>
+                  <button type="submit" class="btn btn-success float-right">Signup!</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -66,7 +68,7 @@
                 code = obj.code;
 
               if(code == -1){
-                displayValidationErrors(obj.errors)
+                displayValidationErrors(obj.errors);
               }else{
 
                 var type = obj.type,
@@ -105,7 +107,7 @@
                 code = obj.code;
 
               if(code == -1){
-                displayValidationErrors(obj.errors)
+                displayValidationErrors(obj.errors);
               }else{
 
                 var type = obj.type,
@@ -115,6 +117,7 @@
                 toastr[type](message, title);
 
                 if(code == 1){
+                  $('#signUpArea').html('<div class="alert alert-success"> <h4 class="alert-heading">Well done!</h4><p class="mb-0">Account created successfully! Please use the login form to the left to continue.<p><div>')
                 }
               }
             }
