@@ -25,13 +25,11 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    console.log('hello');
     $('#fileUploadForm').submit(function(e){
-      alert('hello');
       e.preventDefault();
 
       var fileData = $('#fileUpload').prop('files')[0];
-      alert(fileData);
+      console.log(fileData);
       $.ajax({
         url: 'https://naturalhr-challenge.herokuapp.com/home/upload_file',
         type: 'POST',
@@ -60,7 +58,7 @@
             toastr[type](message, title);
 
             if(code == 1){
-              
+
             }
           }
         }
