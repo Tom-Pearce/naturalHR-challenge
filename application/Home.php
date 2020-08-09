@@ -42,7 +42,15 @@ require_once 'libraries/authLib.php';
             echo '<bR />';
             $real = realpath($_FILES['userfile']['tmp_name']);
             var_dump($real);
-            move_uploaded_file($_FILES['userfile']['tmp_name'], 'files/' . $_FILES['userfile']['name']);
+            move_uploaded_file($_FILES['userfile']['tmp_name'], '../files/' . $_FILES['userfile']['name']);
+            echo '<br />1<br />';
+            move_uploaded_file($_FILES['userfile']['tmp_name'], '../application/files/' . $_FILES['userfile']['name']);
+            echo '<br />2<br />';
+            move_uploaded_file($_FILES['userfile']['tmp_name'], '../app/application/files/' . $_FILES['userfile']['name']);
+            echo '<br />3<br />';
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'app/application/files/' . $_FILES['userfile']['name']);
+            echo '<br />4<br />';
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'application/files/' . $_FILES['userfile']['name']);
           }else{
             $response = array(
               'code' => 0,
