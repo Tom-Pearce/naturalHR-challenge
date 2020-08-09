@@ -59,6 +59,9 @@
           headers: {
             'BEARER-X' : token,
             'IV' : tokenIv,
+          },
+          success: function(response){
+            $('#main').html(response);
           }
         })
       }
