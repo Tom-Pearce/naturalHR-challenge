@@ -5,6 +5,7 @@
 
           <div class="row">
             <div class="col-6 border-right border-info">
+              <h3 class="fon-weight-light">Existing User</h3>
               <form id="loginForm">
                 <input type="email" class="form-control mb-2" name="email" maxlength="128" placeholder="Email" required/>
                 <input type="password" class="form-control mb-2" name="password" minlength="8" maxlength="32" placeholder="Password" required/>
@@ -12,6 +13,7 @@
               </form>
             </div>
             <div class="col-6" id="signUpArea">
+              <h3 class="fon-weight-light">New User</h3>
               <form id="signupForm">
                 <div class="row mb-2">
                   <div class="col-6">
