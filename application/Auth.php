@@ -9,19 +9,20 @@
       $authLib = new authLib();
 
       if($authLib->logged_in()){
-
+        require_once 'Home.php';
+        $home = new Home();
+        $home->index();
       }else{
+        ob_start();
+        include('views/frame/header_view.php');
         $this->login();
+        include('views/frame/footer_view.php');
+        ob_end_flush();
       }
-
     }
 
     function login(){
-      ob_start();
-      include('views/frame/header_view.php');
       include('views/auth/login.php');
-      include('views/frame/footer_view.php');
-      ob_end_flush();
     }
 
     function login_task(){
@@ -67,7 +68,7 @@
           if($token){
             $response = array(
               'code' => 1,
-              'token' => $token,
+              'token_data' => $token,
             );
           }else{
             $response = array(

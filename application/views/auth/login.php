@@ -27,8 +27,7 @@
                 code = obj.code;
 
               if(code == -1){
-
-
+                displayValidationErrors(obj.errors)
               }else{
 
                 var type = obj.type,
@@ -38,7 +37,9 @@
                 toastr[type](message, title);
 
                 if(code == 1){
-                  alert(obj.token);
+                  token = obj.token_data.token;
+                  tokenIv = obj.token_data.iv;
+                  loadHome();
                 }
               }
             }

@@ -2,10 +2,17 @@
 
   class authLib{
 
-    function generate_token($user_id = NULL){
+    function generate_token($user_id = NULL, $iv = NULL){
 
       // If user ID passed (they authenticated)
       if($user_id){
+
+        if(!$iv){
+          $cstrong = FALSE;
+          while (!$cstrong){
+            $iv = openssl_random_pseudo_bytes(rand(100, 200), $cstrong);
+          }
+        }
 
         // Get current time
         $timestamp = time();
@@ -16,13 +23,18 @@
           'user_id' => $user_id,
         );
 
-        return $token = openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03');
+        $response = array(
+          'token' => $token = openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', $iv),
+          'iv' => $iv,
+        );
+
+        return $response;
       }else{
         return NULL;
       }
     }
 
-    function validate_token($token = NULL){
+    function validate_token($token = NULL, $iv = NULL){
       if($token){
         $data = json_decode(openssl_encrypt($token, "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03'));
 
