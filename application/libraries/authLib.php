@@ -10,7 +10,7 @@
         if(!$iv){
           $cstrong = FALSE;
           while (!$cstrong){
-            $iv = bin2hex(openssl_random_pseudo_bytes(16, $cstrong));
+            $iv = bin2hex(openssl_random_pseudo_bytes(8, $cstrong));
           }
         }
 
@@ -24,7 +24,7 @@
         );
 
         $token_data = array(
-          'token' => openssl_encrypt(json_encode($data), "AES-256-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv),
+          'token' => openssl_encrypt(json_encode($data), "AES-128-CBC", 'Lj6cReD7{hcVGUE{BFD.Qa]7Ht4Nal03', NULL, $iv),
           'iv' => $iv,
         );
 
