@@ -62,7 +62,7 @@
             toastr[type](message, title);
 
             if(code == 1){
-
+              loadFileList();
             }
           }
         }

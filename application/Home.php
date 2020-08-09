@@ -36,13 +36,36 @@ require_once 'models/homeModel.php';
             'image/jpeg',
             'application/msword'
           );
-          
+
           if(in_array(mime_content_type($_FILES['userfile']['tmp_name']), $allowed_types)){
 
             $homeModel = new homeModel();
             $file_id = $homeModel->insert_user_file($user_id, $_FILES['userfile']['name']);
 
-            move_uploaded_file($_FILES['userfile']['tmp_name'], 'application/files/' . $file_id);
+            if($file_id){
+              if(move_uploaded_file($_FILES['userfile']['tmp_name'], 'application/files/' . $file_id)){
+                $response = array(
+                  'code' => 1,
+                  'type' => 'success',
+                  'title' => 'Success',
+                  'message' => 'Successfully saved file.',
+                );
+              }else{
+                $response = array(
+                  'code' => 0,
+                  'type' => 'error',
+                  'title' => 'Error',
+                  'message' => 'Failed to save file.',
+                );
+              }
+            }else{
+              $response = array(
+                'code' => 0,
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Failed to generate file record.',
+              );
+            }
           }else{
             $response = array(
               'code' => 0,
