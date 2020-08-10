@@ -29,3 +29,5 @@ To migrate to a production environment the following would need actioning:
 * Ability to view and delete uploaded files
 * User management system - create/update/delete user records
 * Database migration tool
+* Improve responiveness of design
+* Hide signup behind a button click
